@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    id="phonegap-plugin-shortcut"
+    version="1.0.0">
+
+  <name>ShortcutPlugin</name>
+	<author>David Dulak</author>
+
+	<description>
+		This plugin allows your application to use iOS9 3d touch shortcuts from your app icon.
+	</description>
+
+	<license>MIT</license>
+
+	<js-module src="www/shortcut.js" name="Shortcut">
+        <clobbers target="Shortcut" />
+	</js-module>
+
+	<engines>
+		<engine name="cordova" version=">=3.0.0" />
+	</engines>
+
+	<!-- ios -->
+	<platform name="ios">
+
+    <config-file target="*-Info.plist" parent=">UIApplicationShortcutItems">
+    <key>UIApplicationShortcutItems</key>
+    <array>
+      <dict>
+        <key>UIApplicationShortcutItemType</key>
+        <string>com.mm.pooltime.analysis</string>
+        <key>UIApplicationShortcutItemTitle</key>
+        <string>Water Analysis</string>
+        <key>UIApplicationShortcutItemSubtitle</key>
+        <string>Start a water test</string>
+        <key>UIApplicationShortcutItemIconType</key>
+        <string>UIApplicationShortcutIconTypeCompose</string>
+      </dict>
+    </array>
+    </config-file>
+
+		<source-file src="src/ios/AppDelegate+shortcut.m" />
+		<source-file src="src/ios/ShortcutPlugin.m" />
+
+		<header-file src="src/ios/AppDelegate+shortcut.h" />
+		<header-file src="src/ios/ShortcutPlugin.h" />
+
+	</platform>
+
+</plugin>
