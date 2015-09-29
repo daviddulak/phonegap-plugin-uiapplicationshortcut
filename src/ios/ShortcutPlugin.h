@@ -1,28 +1,12 @@
-// #import <Foundation/Foundation.h>
-// #import <Cordova/CDV.h>
-// #import <Cordova/CDVPlugin.h>
+#import <Foundation/Foundation.h>
+#import <Cordova/CDV.h>
+#import <Cordova/CDVPlugin.h>
 
-// @interface ShortcutPlugin : CDVPlugin
-// {
-//     NSString *shortcutType;
-//     NSString *shortcutCallbackId;
-//     NSString *callback;
-    
-//     BOOL ready;
-// }
+@interface ShortcutPlugin : CDVPlugin
 
-// @property (nonatomic, copy) NSString *callbackId;
-// @property (nonatomic, copy) NSString *shortcutCallbackId;
-// @property (nonatomic, copy) NSString *callback;
+@property (nonatomic, copy) NSString *callbackId;
+@property (nonatomic, copy) NSString *callback;
 
-// @property (nonatomic, strong) NSString *shortcutType;
+- (void)sendResult:(NSString*)shortcut;
 
-// - (void)init:(CDVInvokedUrlCommand*)command;
-
-// - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
-// - (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
-
-// - (void)setNotificationMessage:(NSDictionary *)notification;
-// - (void)notificationReceived;
-
-// @end
+@end
