@@ -23,7 +23,7 @@
 	<!-- ios -->
 	<platform name="ios">
 
-    <config-file target="*-Info.plist" parent=">UIApplicationShortcutItems">
+    <config-file target="*-Info.plist" parent="UIApplicationShortcutItems">
     <key>UIApplicationShortcutItems</key>
     <array>
       <dict>
