@@ -1,29 +1,11 @@
 var exec = cordova.require('cordova/exec');
 
-var Shortcut = function(options) {
-    this._handlers = {
-        'registration': [],
-        'notification': [],
-        'error': []
-    };
+function Shortcut() {};
 
-    // require options parameter
-    if (typeof options === 'undefined') {
-        throw new Error('The options argument is required.');
-    }
 
-    // store the options to this object instance
-    this.options = options;
+Shortcut.prototype.check = function(success, fail) {
+    cordova.exec(success, fail, 'Shortcut', 'check', []);
 };
 
 
-Shortcut.prototype.on = function(eventName, callback) {
-    if (this._handlers.hasOwnProperty(eventName)) {
-        this._handlers[eventName].push(callback);
-    }
-};
-
-
-module.exports = {
-    Shortcut: Shortcut
-};
+module.exports = new Shortcut();
