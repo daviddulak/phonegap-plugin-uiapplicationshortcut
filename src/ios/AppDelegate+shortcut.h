@@ -2,4 +2,6 @@
 
 @interface AppDelegate (shortcut)
 
+- (void)actOnShortcut: (NSString*)shortcut;
+
 @end
