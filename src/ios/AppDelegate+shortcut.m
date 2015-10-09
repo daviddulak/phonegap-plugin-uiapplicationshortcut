@@ -36,11 +36,20 @@
 
 - (BOOL)swizzled_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UIApplicationShortcutItem* shortcutItem = launchOptions[UIApplicationLaunchOptionsShortcutItemKey];
-    NSLog(@"swizzled_app: %@", [shortcutItem type]);
+    //UIApplicationShortcutItem* shortcutItem = launchOptions[UIApplicationLaunchOptionsShortcutItemKey];
+    //NSString * shortcut = [shortcutItem type];
+    //NSLog(@"swizzled_app: %@", shortcut);
+    //[self actOnShortcut:shortcut];
 
     SEL realSelector =  @selector(swizzled_application:didFinishLaunchingWithOptions:);
     return (BOOL) objc_msgSend([application delegate], realSelector, application, launchOptions);
+}
+
+-(void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+
+    NSString * shortcut = [shortcutItem type];
+    //NSLog(@"app: %@", shortcut);
+    [self actOnShortcut:shortcut];
 }
 
 - (void)actOnShortcut:(NSString *)shortcut
@@ -50,19 +59,6 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:shortcut forKey:@"Shortcut"];
         [defaults synchronize];
-    }
-}
-
--(void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
-
-    NSString * shortcut = [shortcutItem type];
-    NSLog(@"app: %@", shortcut);
-
-    if (shortcut)
-    {
-        ShortcutPlugin *plugin = [self.viewController getCommandInstance:@"ShortcutPlugin"];
-        //[[[ShortcutPlugin alloc] init] setResult:shortcut];
-        [plugin setResult:shortcut];
     }
 }
 
