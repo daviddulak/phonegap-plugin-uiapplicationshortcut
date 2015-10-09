@@ -47,7 +47,9 @@
 {
     if (shortcut)
     {
-        [[ShortcutPlugin init] setResult:shortcut];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:shortcut forKey:@"Shortcut"];
+        [defaults synchronize];
     }
 }
 
