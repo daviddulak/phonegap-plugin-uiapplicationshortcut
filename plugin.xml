@@ -8,7 +8,7 @@
 	<author>David Dulak</author>
 
 	<description>
-		This plugin allows your application to use iOS9 3d touch shortcuts from your app icon.
+		This plugin allows your application to use iOS9 3d touch shortcuts from your app icon. Also known as UIApplicationShortcut.
 	</description>
 
 	<license>MIT</license>
