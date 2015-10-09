@@ -22,8 +22,8 @@ edit `cordova/plugins/ios.json` to your desired shortcuts
 
 __Check for the Occurance__
 
-window.plugins.shortcut.check(function(e){
+`window.plugins.shortcut.check(function(e){
   if (e === 'com.string') {
     console.log('Success');
   }
-});
+});`
